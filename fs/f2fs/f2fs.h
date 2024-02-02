@@ -1904,14 +1904,14 @@ static void inline deserialize_decompress_index(decompress_index_t val,
 	di->ofs = (val & (0xfff << DI_OFS_OFFS)) >> DI_OFS_OFFS;
 }
 
-#define MAX_BLKS_PER_CLUSTER		(1 << 3) // MAX_COMPRESS_LOG_SIZE
-
 #define CLEAR_IFLAG_IF_SET(inode, flag)                                        \
 	if (F2FS_I(inode)->i_flags & flag) {                                   \
 		F2FS_I(inode)->i_flags &= ~flag;                               \
 		f2fs_mark_inode_dirty_sync(inode, true);                       \
 	}
 #endif
+
+#define MAX_BLKS_PER_CLUSTER		(1 << 3) // MAX_COMPRESS_LOG_SIZE
 
 /* compress context */
 struct compress_ctx {
